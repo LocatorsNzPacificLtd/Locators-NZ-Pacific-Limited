@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locators NZ Pacific Limited – Subsurface Utility Engineering & Digital Infrastructure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+  :root {
+    --navy: #0B1F3A;
+    --navy-mid: #132D52;
+    --navy-light: #1E3F6F;
+    --blue: #1A6DB5;
+    --blue-bright: #2484D8;
+    --accent: #F0A500;
+    --accent-light: #FFD166;
+    --white: #FFFFFF;
+    --off-white: #F4F7FC;
+    --text-muted: #8A9BBB;
+    --text-light: #C5D1E8;
+    --border: rgba(255,255,255,0.08);
+    --border-dark: rgba(11,31,58,0.12);
+    --card-bg: rgba(255,255,255,0.04);
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11,31,58,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-bright));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: white;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a {
+    font-size: 14px; color: var(--text-light); text-decoration: none;
+    font-weight: 500; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--accent); color: var(--navy) !important;
+    padding: 8px 20px; border-radius: 6px;
+    font-weight: 600 !important; transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--accent-light) !important; color: var(--navy) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 40px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    display: flex; align-items: center; gap: 60px;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+  }
+  .hero-content { flex: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(240,165,0,0.12); border: 1px solid rgba(240,165,0,0.25);
+    border-radius: 20px; padding: 6px 14px;
+    font-size: 12px; font-weight: 600; color: var(--accent);
+    letter-spacing: .06em; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .hero-badge::before { content: '●'; font-size: 8px; }
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .hero-title em { font-style: normal; color: var(--accent); }
+  .hero-sub {
+    font-size: 18px; color: var(--text-light);
+    max-width: 520px; margin-bottom: 40px; line-height: 1.7;
+  }
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: var(--navy);
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 700; font-size: 15px; text-decoration: none;
+    transition: background .2s, transform .15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 500; font-size: 15px; text-decoration: none;
+    transition: border-color .2s, background .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px; padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px; font-weight: 700; color: var(--accent);
+  }
+  .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .hero-visual {
+    flex: 0 0 420px;
+    background: var(--navy-mid);
+    border-radius: 20px; border: 1px solid var(--border);
+    padding: 32px; position: relative; overflow: hidden;
+  }
+  .hero-visual::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(36,132,216,0.2), transparent 70%);
+  }
+  .visual-label {
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px;
+  }
+  .visual-map {
+    background: rgba(26,109,181,0.08);
+    border: 1px solid rgba(26,109,181,0.15);
+    border-radius: 12px; padding: 24px;
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+  }
+  .pipe-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px; padding: 10px 14px;
+    background: rgba(255,255,255,0.03); border-radius: 8px;
+    border-left: 3px solid;
+  }
+  .pipe-row:nth-child(1) { border-color: #E24B4A; }
+  .pipe-row:nth-child(2) { border-color: var(--accent); }
+  .pipe-row:nth-child(3) { border-color: #2484D8; }
+  .pipe-row:nth-child(4) { border-color: #27AE60; }
+  .pipe-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .pipe-row:nth-child(1) .pipe-dot { background: #E24B4A; }
+  .pipe-row:nth-child(2) .pipe-dot { background: var(--accent); }
+  .pipe-row:nth-child(3) .pipe-dot { background: #2484D8; }
+  .pipe-row:nth-child(4) .pipe-dot { background: #27AE60; }
+  .pipe-info { flex: 1; }
+  .pipe-name { font-size: 13px; font-weight: 600; color: var(--white); }
+  .pipe-depth { font-size: 11px; color: var(--text-muted); }
+  .pipe-status {
+    font-size: 11px; font-weight: 600; padding: 3px 8px;
+    border-radius: 4px; background: rgba(39,174,96,0.15); color: #5DD488;
+  }
+  .visual-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-muted);
+  }
+  .live-badge {
+    display: flex; align-items: center; gap: 6px;
+    color: #5DD488; font-size: 12px; font-weight: 600;
+  }
+  .live-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #5DD488;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 100px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
+    line-height: 1.15; margin-bottom: 18px;
+  }
+  .section-sub {
+    font-size: 17px; color: var(--text-light);
+    max-width: 560px; line-height: 1.7;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--navy-mid); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .about-content .section-sub { margin-bottom: 32px; }
+  .about-points { display: flex; flex-direction: column; gap: 16px; }
+  .about-point {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px; background: var(--card-bg);
+    border: 1px solid var(--border); border-radius: var(--radius);
+  }
+  .about-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(240,165,0,0.12); display: flex; align-items: center;
+    justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .about-point-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .about-point-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .about-numbers {
+    background: var(--navy-light); border-radius: var(--radius-lg);
+    padding: 40px; border: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  .about-num-item { text-align: center; }
+  .about-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 44px; font-weight: 700; color: var(--accent); line-height: 1;
+  }
+  .about-num-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+  .about-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* ── SERVICES ── */
+  #services {}
+  .services-intro {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px; flex-wrap: wrap; gap: 24px;
+  }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .service-card {
+    background: var(--navy-mid); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 32px;
+    transition: border-color .2s, transform .2s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+    opacity: 0; transition: opacity .2s;
+  }
+  .service-card:hover { border-color: rgba(36,132,216,0.4); transform: translateY(-3px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: rgba(26,109,181,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 20px;
+  }
+  .service-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px; font-weight: 600; margin-bottom: 10px;
+  }
+  .service-text { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 20px; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .service-tag {
+    font-size: 11px; font-weight: 600; padding: 4px 10px;
+    border-radius: 4px; background: rgba(36,132,216,0.1);
+    color: #7DBFEF; border: 1px solid rgba(36,132,216,0.15);
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--navy-mid); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+  .project-card {
+    background: var(--navy); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden;
+    transition: transform .2s, border-color .2s;
+  }
+  .project-card:hover { transform: translateY(-3px); border-color: rgba(240,165,0,0.3); }
+  .project-thumb {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; position: relative;
+  }
+  .project-thumb-1 { background: linear-gradient(135deg, #0B2A50, #1A4A80); }
+  .project-thumb-2 { background: linear-gradient(135deg, #1A2A0B, #2A4A10); }
+  .project-thumb-3 { background: linear-gradient(135deg, #2A0B1A, #501A30); }
+  .project-body { padding: 24px; }
+  .project-category {
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+  }
+  .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .project-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+  .project-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+  .project-outcome { color: #5DD488; font-weight: 600; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {}
+  .testimonials-intro { margin-bottom: 56px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .testimonial-card {
+    background: var(--navy-mid); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 32px;
+  }
+  .testimonial-quote {
+    font-size: 28px; color: var(--accent); line-height: 1; margin-bottom: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .testimonial-text {
+    font-size: 14px; color: var(--text-light); line-height: 1.75;
+    margin-bottom: 24px; font-style: italic;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--navy-light); display: flex; align-items: center;
+    justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .testimonial-name { font-size: 14px; font-weight: 600; }
+  .testimonial-role { font-size: 12px; color: var(--text-muted); }
+  .testimonial-stars { color: var(--accent); font-size: 13px; margin-bottom: 12px; }
+
+  /* ── CAREERS ── */
+  #careers { background: var(--navy-mid); }
+  .careers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+  .job-card {
+    background: var(--navy); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 28px;
+    display: flex; flex-direction: column; gap: 16px;
+    transition: border-color .2s;
+  }
+  .job-card:hover { border-color: rgba(240,165,0,0.3); }
+  .job-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .job-badge {
+    font-size: 11px; font-weight: 600; padding: 4px 10px;
+    border-radius: 4px; background: rgba(39,174,96,0.12); color: #5DD488;
+    border: 1px solid rgba(39,174,96,0.2);
+  }
+  .job-title { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 600; }
+  .job-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .job-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+  .job-text { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+  .job-apply {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; color: var(--accent);
+    text-decoration: none; margin-top: 4px;
+    transition: gap .2s;
+  }
+  .job-apply:hover { gap: 10px; }
+  .careers-culture {
+    margin-top: 48px; background: var(--navy);
+    border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 40px; display: flex; gap: 48px; align-items: center; flex-wrap: wrap;
+  }
+  .culture-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px; font-weight: 600; margin-bottom: 10px;
+  }
+  .culture-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 420px; }
+  .culture-perks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .perk {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--text-light);
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 6px;
+  }
+
+  /* ── CONTACT ── */
+  #contact {}
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 56px; }
+  .contact-info { display: flex; flex-direction: column; gap: 24px; }
+  .contact-item { display: flex; gap: 16px; }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(26,109,181,0.15); display: flex;
+    align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+  }
+  .contact-item-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .contact-item-value { font-size: 14px; color: var(--text-muted); }
+  .contact-form {
+    background: var(--navy-mid); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 36px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: var(--text-light); }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: var(--navy); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px;
+    font-size: 14px; color: var(--white); font-family: 'Inter', sans-serif;
+    transition: border-color .2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--blue-bright);
+  }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-group select option { background: var(--navy); }
+  .form-submit {
+    width: 100%; padding: 14px; border: none; border-radius: 8px;
+    background: var(--accent); color: var(--navy);
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    font-family: 'Inter', sans-serif; transition: background .2s;
+  }
+  .form-submit:hover { background: var(--accent-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #070F1C; border-top: 1px solid var(--border);
+    padding: 60px 40px 32px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-top: 16px; max-width: 280px; }
+  .footer-col-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 16px; letter-spacing: .02em; }
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid var(--border); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy { font-size: 13px; color: var(--text-muted); }
+  .footer-nzbn { font-size: 12px; color: var(--text-muted); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column; position: fixed;
+      top: 68px; left: 0; right: 0; background: var(--navy);
+      padding: 24px; gap: 20px; border-bottom: 1px solid var(--border);
+    }
+    #home { padding: 100px 20px 60px; }
+    .hero-grid { flex-direction: column; }
+    .hero-visual { flex: none; width: 100%; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+    section { padding: 72px 20px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid, .projects-grid, .testimonials-grid, .careers-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .services-intro { flex-direction: column; align-items: flex-start; }
+    .about-numbers { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-mark">L</div>
+    Locators <span>NZ Pacific Limited</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">NZ & Pacific Infrastructure Specialists</div>
+      <h1 class="hero-title">
+        Subsurface Utility Engineering &amp; <em>Digital Infrastructure</em> Solutions
+      </h1>
+      <p class="hero-sub">
+        Locators NZ/Pacific Limited eliminates underground utility risk for Tier-1 civil contractors, local government, and utilities companies across New Zealand and the Pacific.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Get a Free Consultation →</a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+
+    </div>
+    <div class="hero-visual">
+      <div class="visual-label">Live Subsurface Utility Map — Auckland CBD</div>
+      <div class="visual-map">
+        <div class="pipe-row">
+          <div class="pipe-dot"></div>
+          <div class="pipe-info">
+            <div class="pipe-name">High Voltage Cable</div>
+            <div class="pipe-depth">Depth: 0.8m · Vector Network</div>
+          </div>
+          <div class="pipe-status">Mapped</div>
+        </div>
+        <div class="pipe-row">
+          <div class="pipe-dot"></div>
+          <div class="pipe-info">
+            <div class="pipe-name">Gas Main DN200</div>
+            <div class="pipe-depth">Depth: 1.2m · Vector Gas</div>
+          </div>
+          <div class="pipe-status">Mapped</div>
+        </div>
+        <div class="pipe-row">
+          <div class="pipe-dot"></div>
+          <div class="pipe-info">
+            <div class="pipe-name">Water Main DN300</div>
+            <div class="pipe-depth">Depth: 1.5m · Watercare</div>
+          </div>
+          <div class="pipe-status">Mapped</div>
+        </div>
+        <div class="pipe-row">
+          <div class="pipe-dot"></div>
+          <div class="pipe-info">
+            <div class="pipe-name">Fibre Duct · Chorus</div>
+            <div class="pipe-depth">Depth: 0.5m · Telecoms</div>
+          </div>
+          <div class="pipe-status">Mapped</div>
+        </div>
+      </div>
+      <div class="visual-footer">
+        <span>4 utilities identified · 0 conflicts</span>
+        <div class="live-badge"><div class="live-dot"></div> Live Data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-eyebrow">About Us</div>
+        <h2 class="section-title">Auckland-Based. Built on Expertise.</h2>
+        <p class="section-sub">
+          Locators NZ/Pacific Limited is a specialist consultancy operating at the intersection of subsurface utility engineering, digital infrastructure, and strategic risk management. We protect projects before the first shovel breaks ground.
+        </p>
+        <hr class="about-divider">
+        <div class="about-points">
+          <div class="about-point">
+            <div class="about-icon">🎯</div>
+            <div>
+              <div class="about-point-title">Subject Matter Experts</div>
+              <div class="about-point-text">Embedded in major Tier-1 civil bid teams as the go-to specialist for utility verification and BIM-integrated digital engineering.</div>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-icon">🗺️</div>
+            <div>
+              <div class="about-point-title">NZ & Pacific Coverage</div>
+              <div class="about-point-text">Operating across New Zealand with active expansion into Pacific island infrastructure markets — Fiji, Tonga, Samoa, and beyond.</div>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-icon">⚙️</div>
+            <div>
+              <div class="about-point-title">Field-to-Boardroom Capability</div>
+              <div class="about-point-text">We translate complex field-based subsurface data into clear executive insights, commercial frameworks, and BIM-ready digital deliverables.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-intro">
+      <div>
+        <div class="section-eyebrow">What We Do</div>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-sub">Specialist capabilities that protect your project from the ground up.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <div class="service-title">Subsurface Utility Engineering (SUE)</div>
+        <p class="service-text">Comprehensive underground utility identification, verification, and mapping before excavation. We eliminate the risk of costly cable strikes and service disruptions on major civil projects.</p>
+        <div class="service-tags">
+          <span class="service-tag">Ground Penetrating Radar</span>
+          <span class="service-tag">Electromagnetic Detection</span>
+          <span class="service-tag">Vacuum Excavation</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-title">Infrastructure Risk Consultancy</div>
+        <p class="service-text">Strategic risk assessment and mitigation planning for major infrastructure projects. We align your project delivery with NZ safety standards, utility compliance codes, and local government requirements.</p>
+        <div class="service-tags">
+          <span class="service-tag">HSWA 2015 Compliance</span>
+          <span class="service-tag">Risk Assessment</span>
+          <span class="service-tag">Regulatory Landscaping</span>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">Start Your Project Today</h2>
+    <p class="section-sub">Tell us about your project and we will get back to you within one business day with a tailored consultation.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-title">Office</div>
+            <div class="contact-item-value">Auckland, New Zealand<br>Hybrid operations across NZ & Pacific</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-item-title">Email</div>
+            <div class="contact-item-value">locatorsnzpacificltd@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-item-title">Phone</div>
+            <div class="contact-item-value">+64 21 090 71670<br>Mon–Sat, 7:30am–5:30pm NZST</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div>
+            <div class="contact-item-title">NZBN</div>
+            <div class="contact-item-value">9429052808111</div>
+          </div>
+        </div>
+        <div style="background:var(--navy-mid);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-top:8px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--accent)">Emergency Utility Strike Response</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.6">Hit an unmarked utility on site? Call us immediately for emergency subsurface assessment and incident response support.</div>
+          <div style="font-size:15px;font-weight:700;color:var(--white);margin-top:10px">24/7 Emergency: +64 21 090 71670</div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div style="font-size:17px;font-weight:600;margin-bottom:24px;font-family:'Space Grotesk',sans-serif">Request a Consultation</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Fulton Hogan Ltd">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="john@company.co.nz">
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Utility Locating</option>
+            <option>Utility Surveying</option>
+            <option>Utility Mapping</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Details</label>
+          <textarea placeholder="Briefly describe your project, location, and timeline..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="#home" class="nav-logo" style="text-decoration:none">
+          <div class="nav-logo-mark">L</div>
+          Locators <span style="color:var(--accent)">NZ Pacific Limited</span>
+        </a>
+        <p class="footer-brand-text">Specialist subsurface utility engineering, 3D digital infrastructure, and risk consultancy for New Zealand and Pacific infrastructure projects.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="#services">SUE & Utility Mapping</a>
+          <a href="#services">Infrastructure Risk Consultancy</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="#about">About Us</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Regions</div>
+        <div class="footer-links">
+          <a href="#contact">Auckland</a>
+          <a href="#contact">Wellington</a>
+          <a href="#contact">Christchurch</a>
+          <a href="#contact">Fiji & Pacific</a>
+          <a href="#contact">Trans-Tasman</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Locators NZ Pacific Limited. All rights reserved.</div>
+      <div class="footer-nzbn">NZBN: 9429052808111 · Auckland, New Zealand</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function handleSubmit() {
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = '✓ Enquiry Sent — We will be in touch within 1 business day';
+  btn.style.background = '#27AE60';
+  btn.style.color = '#fff';
+  setTimeout(() => {
+    btn.textContent = 'Send Enquiry →';
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 4000);
+}
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.style.background = window.scrollY > 40
+    ? 'rgba(11,31,58,0.98)'
+    : 'rgba(11,31,58,0.95)';
+});
+
+// Smooth scroll for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('navLinks').classList.remove('open');
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
